@@ -16,3 +16,9 @@ export function apiFetchPostById (id) {
     
     return fetch(url, apiHeaders).then((res) => res.json())
 }
+
+export function apiFetchCategories () {
+    const url = `${apiUrl}/categories`
+
+    return fetch(url, apiHeaders).then((res) => res.json())
+}
