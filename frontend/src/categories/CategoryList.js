@@ -1,5 +1,6 @@
 import React from 'react'
 import { apiFetchCategories } from '../utils/api'
+import { Link } from 'react-router-dom'
 
 class CategoryList extends React.Component {
     state = {
@@ -21,9 +22,11 @@ class CategoryList extends React.Component {
             <div>
                 <h3>Categories</h3>
                 {this.state.categories.map((category) => (
-                    <a key={category.name} href="#">
-                        <div>{category.name} {category.path}</div>
-                    </a>
+                    <div key={category.path}>
+                        <Link to={`/category/${category.path}`}>
+                            {category.name}
+                        </Link>
+                    </div>
                 ))}
             </div>
         )
