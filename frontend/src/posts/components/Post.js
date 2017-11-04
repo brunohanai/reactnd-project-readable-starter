@@ -1,10 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchPostFromServer } from '../actions'
+import { fetchPostFromServer, setCurrentPost } from '../actions'
 
 class Post extends React.Component {
     componentDidMount() {
         this.props.fetchPostFromServer(this.props.match.params.id)
+    }
+
+    componentWillUnmount() {
+        this.props.setCurrentPost(null)
     }
 
     render() {
@@ -32,7 +36,8 @@ function mapStateToProps ({ currentPost }) {
 
 function mapDispatchToProps (dispatch) {
     return {
-        fetchPostFromServer: (data) => dispatch(fetchPostFromServer(data))
+        fetchPostFromServer: (data) => dispatch(fetchPostFromServer(data)),
+        setCurrentPost: (data) => dispatch(setCurrentPost(data)),
     }
 }
 
