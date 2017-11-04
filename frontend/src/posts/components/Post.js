@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { fetchPostFromServer, setCurrentPost } from '../actions'
+import moment from 'moment'
 
 class Post extends React.Component {
     componentDidMount() {
@@ -19,6 +20,12 @@ class Post extends React.Component {
                 {post && (
                     <div>
                         <h1>{post.title}</h1>
+                        
+                        <p>
+                            {post.author}, {moment(post.timestamp).format('MMMM Do YYYY')}
+                        </p>
+                        
+                        <p>voteScore: {post.voteScore}</p>
                         
                         <p>{post.body}</p>
                     </div>
