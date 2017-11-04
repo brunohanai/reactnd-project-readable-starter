@@ -4,6 +4,7 @@ import './App.css'
 import { Route, Link } from 'react-router-dom'
 import Post from './posts/components/Post'
 import Home from './default/Home'
+import Category from './categories/Category'
 
 class App extends Component {
   componentDidMount() {
@@ -18,6 +19,8 @@ class App extends Component {
         <Route exact path="/" component={Home}/>
 
         <Route path="/post/:id" component={Post}/>
+
+        <Route path="/category/:category" component={Category}/>
       </div>
     );
   }
