@@ -1,31 +1,12 @@
 import React from 'react'
-import { apiFetchPosts } from '../utils/api'
-import PostList from '../posts/components/PostList'
+import PostListContainer from '../posts/components/PostListContainer'
 
-class Category extends React.Component {
-    state = {
-        posts: []
-    }
+const Category = (props) => (
+    <div>
+        <h1>Category: {props.categoryName}</h1>
 
-    componentDidMount () {
-        if (this.props.match.params.category) {
-            apiFetchPosts(this.props.match.params.category).then((res) => {
-                this.setState({
-                    posts: res
-                })
-            })
-        }
-    }
-
-    render () {
-        return (
-            <div>
-                <div>Category</div>
-
-                <PostList posts={this.state.posts}/>
-            </div>
-        )
-    }
-}
+        <PostListContainer categoryName={props.categoryName}/>
+    </div>    
+)
 
 export default Category

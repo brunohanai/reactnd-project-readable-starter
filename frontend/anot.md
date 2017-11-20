@@ -31,21 +31,21 @@ Views
 Seu aplicativo deve ter, no mínimo, quatro views:
 
     Padrão (Root)
-        deve listar todas as categorias disponíveis, que devem se conectar a uma view de categoria para esta categoria
-        deve listar todas as postagens ordenadas pelo voteScore (começando pela pontuação mais alta)
-        deve ter um controle para modificar o método de ordenação da lista, incluindo, no mínimo, ordenar por voteScore e ordenar por data de criação
-        deve ter um controle para adicionar novas postagens
+        [x] deve listar todas as categorias disponíveis, que devem se conectar a uma view de categoria para esta categoria
+        [x] deve listar todas as postagens ordenadas pelo voteScore (começando pela pontuação mais alta)
+        [x] deve ter um controle para modificar o método de ordenação da lista, incluindo, no mínimo, ordenar por voteScore e ordenar por data de criação
+        [x] deve ter um controle para adicionar novas postagens
     View de Categoria
-        idêntica à view padrão, mas filtrada para incluir somente postagens com a categoria selecionada
+        [x] idêntica à view padrão, mas filtrada para incluir somente postagens com a categoria selecionada
     View de Detalhe da Postagem
-        deve mostrar os detalhes da postagem, incluindo: título, corpo, autor, data de criação em formato legível pelo usuário e pontuação dos votos
-        deve listar todos os comentários daquela postagem, ordenados por voteScore (começando pelo mais alto)
-        deve ter controles para editar ou remover a postagem
-        deve ter um controle para adicionar um novo comentário
-        implemente o formulário de comentários da forma que quiser (em linha, modal, etc.)
+        [x] deve mostrar os detalhes da postagem, incluindo: título, corpo, autor, data de criação em formato legível pelo usuário e pontuação dos votos
+        [x] deve listar todos os comentários daquela postagem, ordenados por voteScore (começando pelo mais alto)
+        [x] deve ter controles para editar ou remover a postagem
+        [x] deve ter um controle para adicionar um novo comentário
+        [x] implemente o formulário de comentários da forma que quiser (em linha, modal, etc.)
         os comentários também devem ter controles para edição ou exclusão
     Criar/Editar a View
-        deve ter um formulário para criar novas postagens ou editar as existentes
+        [x] deve ter um formulário para criar novas postagens ou editar as existentes
         ao editar, os dados existentes devem ser povoados no formulário
 
 # Utils
@@ -64,3 +64,7 @@ Seu aplicativo deve ter, no mínimo, quatro views:
 
 GET http://localhost:3001/posts
 Authorization: eu
+
+POST http://localhost:3001/posts
+Authorization: eu
+Body: {id: 1}

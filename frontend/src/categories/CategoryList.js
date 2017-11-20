@@ -1,36 +1,31 @@
 import React from 'react'
-import { apiFetchCategories } from '../utils/api'
 import { Link } from 'react-router-dom'
 
 class CategoryList extends React.Component {
-    state = {
-        categories: [],
+    // TODO: eu fiz dessa forma... mas entao so vou conseguir usar CategoryList fazendo request http?
+    // E se eu quisesse que esse componente recebesse "categories" via props? Assim as vezes poderia usar a api ou as vezes so
+    // passar os objetos... 
+    componentDidMount () {
+        this.props.fetchCategories()
     }
-
-    componentDidMount() {
-        apiFetchCategories().then((res) => {
-            const newCategories = res.categories ? res.categories : []
-
-            this.setState({
-                categories: newCategories,
-            })
-        })
-    }
-
-    render() {
+    
+    render () {
         return (
             <div>
-                <h3>Categories</h3>
-                {this.state.categories.map((category) => (
-                    <div key={category.path}>
-                        <Link to={`/category/${category.path}`}>
-                            {category.name}
-                        </Link>
-                    </div>
-                ))}
+                <h4>Categories</h4>
+
+                <ol class="list-unstyled">
+                    {this.props.categories.map((category) => (
+                        <li key={category.path}>
+                            <Link to={`/category/${category.path}`}>
+                                {category.name}
+                            </Link>
+                        </li>
+                    ))}
+                </ol>
             </div>
         )
     }
-} 
+}
 
 export default CategoryList

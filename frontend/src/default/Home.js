@@ -1,38 +1,45 @@
 import React from 'react'
-import PostList from '../posts/components/PostList'
-import CategoryList from '../categories/CategoryList'
-import { connect } from 'react-redux'
-import { fetchPostsFromServer } from '../posts/actions'
+import PostListContainer from '../posts/components/PostListContainer'
+import CategoryListContainer from '../categories/CategoryListContainer'
+import PostFormContainer from '../posts/components/PostFormContainer'
 
 class Home extends React.Component {
-    componentDidMount() {
-        console.log('Home did mount...')
-        this.props.fetchPostsFromServer()
+    state = {
+        post_form_modal_open: false,
+    }
+
+    postFormModalOpen = () => {
+        this.setState({ post_form_modal_open: true })
+    }
+
+    postFormModalClose = () => {
+        this.setState({ post_form_modal_open: false })
     }
 
     render() {
         return (
             <div>
-                <CategoryList />
-        
-                <PostList posts={this.props.posts} />
+                <PostFormContainer closeModal={this.postFormModalClose} isVisible={this.state.post_form_modal_open}/>
+                
+                <main role="main" class="container">
+                    <div class="row">
+                        <div class="col-sm-8 blog-main">
+                            <PostListContainer />
+                        </div>
+
+                        <aside class="col-sm-3 ml-sm-auto blog-sidebar">
+                            <div class="sidebar-module sidebar-module-inset">
+                                <button onClick={this.postFormModalOpen}>New Post</button>
+                            </div>
+                            <div class="sidebar-module">
+                                <CategoryListContainer />
+                            </div>
+                        </aside>
+                    </div>
+                </main>
           </div>
         )
     }
 }
 
-// TODO: posso ter "all_posts" e "visible_posts"?
-// TODO: aqui posso filtrar e ordenar os posts visiveis?
-function mapStateToProps({ posts }) {
-    return {
-        posts: posts,
-    }
-}
-  
-function mapDispatchToProps(dispatch) {
-    return {
-        fetchPostsFromServer: (data) => dispatch(fetchPostsFromServer(data))
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default Home
