@@ -16,7 +16,7 @@ const PostList = ({ posts, setFilterPostField, setFilterPostDirection, orderFiel
 
             {posts.map((post) => (
                 <div class="blog-post" key={post.id}>
-                    <Link to={`/post/${post.id}`}>
+                    <Link to={`/${post.category}/${post.id}`}>
                         <h2 class="blog-post-title">{post.title}</h2>
                     </Link>
                     <p class="blog-post-meta">

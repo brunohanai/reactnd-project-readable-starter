@@ -17,7 +17,7 @@ class CategoryList extends React.Component {
                 <ol class="list-unstyled">
                     {this.props.categories.map((category) => (
                         <li key={category.path}>
-                            <Link to={`/category/${category.path}`}>
+                            <Link to={`/${category.path}`}>
                                 {category.name}
                             </Link>
                         </li>
