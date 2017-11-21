@@ -23,6 +23,7 @@ const PostList = ({ posts, setFilterPostField, setFilterPostDirection, orderFiel
                         {moment(post.timestamp).format('MMMM Do YYYY')}
                         , by {post.author}
                         . [voteScore: {post.voteScore}]
+                         [comments: {post.commentCount}]
                     </p>
                     <p>{post.body}</p>
                 </div>
