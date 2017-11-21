@@ -39,7 +39,7 @@ function currentPost (state = null, action) {
                 comments: comments,
             }
         case UPDATE_POST_VOTESCORE:
-            if (state.id === action.id) {
+            if (state !== null && state.id === action.id) {
                 return {
                     ...state,
                     voteScore: action.voteScore,

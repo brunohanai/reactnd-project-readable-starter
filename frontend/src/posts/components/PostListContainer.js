@@ -1,8 +1,11 @@
 import { connect } from 'react-redux'
 import PostList from './PostList'
 import { orderObjectArrayByObjectKey } from '../../utils/order'
-import { setUserCurrentFilterPostField } from '../actions'
-import { setUserCurrentFilterPostDirection } from '../actions'
+import { 
+    setUserCurrentFilterPostField,
+    setUserCurrentFilterPostDirection,
+    votePostAndUpdateRedux,
+} from '../actions'
 
 const filterPostsByCategoryName = (posts, categoryName = null) => {
     if (categoryName === null || categoryName === '') {
@@ -20,6 +23,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         setFilterPostField: (data) => dispatch(setUserCurrentFilterPostField(data)),
         setFilterPostDirection: (data) => dispatch(setUserCurrentFilterPostDirection(data)),
+        votePost: (postId, vote) => dispatch(votePostAndUpdateRedux(postId, vote)),
     }
 }
 

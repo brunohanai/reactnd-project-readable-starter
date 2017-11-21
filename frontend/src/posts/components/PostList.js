@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 
-const PostList = ({ posts, setFilterPostField, setFilterPostDirection, orderField, orderDirection }) => {
+const PostList = ({ posts, setFilterPostField, setFilterPostDirection, orderField, orderDirection, votePost }) => {
     return (
         <div>        
             <select value={orderField} onChange={(e) => setFilterPostField(e.target.value)}>
@@ -19,6 +19,10 @@ const PostList = ({ posts, setFilterPostField, setFilterPostDirection, orderFiel
                     <Link to={`/${post.category}/${post.id}`}>
                         <h2 class="blog-post-title">{post.title}</h2>
                     </Link>
+
+                    <button onClick={() => votePost(post.id, 'upVote')}>Upvote</button>
+                    <button onClick={() => votePost(post.id, 'downVote')}>Downvote</button>
+
                     <p class="blog-post-meta">
                         {moment(post.timestamp).format('MMMM Do YYYY')}
                         , by {post.author}
