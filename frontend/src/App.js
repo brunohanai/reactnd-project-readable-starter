@@ -37,8 +37,6 @@ class App extends Component {
   }
 }
 
-// TODO: posso ter "all_posts" e "visible_posts"?
-// TODO: aqui posso filtrar e ordenar os posts visiveis?
 function mapStateToProps({ posts }) {
   return {
       posts: posts,
