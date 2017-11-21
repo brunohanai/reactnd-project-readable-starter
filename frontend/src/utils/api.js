@@ -103,3 +103,17 @@ export function apiDeleteComment (comment) {
 
     return fetch(url, headers).then(res => res.json())
 }
+
+export function apiVotePost (postId, vote) {
+    const url = `${apiUrl}/posts/${postId}`
+
+    const body = { option: vote }
+
+    const headers = {
+        headers: { ...apiHeaders , 'Content-Type': 'application/json'}, 
+        method: 'POST',
+        body: JSON.stringify(body),
+    }
+
+    return fetch(url, headers).then(res => res.json())
+}

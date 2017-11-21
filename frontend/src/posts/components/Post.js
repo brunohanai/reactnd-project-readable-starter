@@ -39,7 +39,7 @@ class Post extends React.Component {
         return (
             <div>
                 {post && (
-                    <div class="blog-post" key={post.id}>    
+                    <div class="blog-post" key={post.id}>   
                         <PostFormContainer 
                             post={post} 
                             mode='edit' 
@@ -51,6 +51,8 @@ class Post extends React.Component {
 
                         <button onClick={() => this.showForm()}>Edit</button>
                         <button onClick={() => this.deletePost(post.id)}>Delete</button>
+                        <button onClick={() => this.props.votePost(post.id, 'upVote')}>Upvote</button>
+                        <button onClick={() => this.props.votePost(post.id, 'downVote')}>Downvote</button>
                     
                         <p class="blog-post-meta">
                             {moment(post.timestamp).format('MMMM Do YYYY')}

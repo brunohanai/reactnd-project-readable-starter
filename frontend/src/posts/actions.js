@@ -9,6 +9,7 @@ import {
     apiNewComment,
     apiEditComment,
     apiDeleteComment,
+    apiVotePost,
 } from '../utils/api'
 
 export const SET_POSTS = 'SET_POSTS'
@@ -17,6 +18,7 @@ export const SET_CURRENT_POST_COMMENTS = 'SET_CURRENT_POST_COMMENTS'
 export const CURRENT_POST_ADD_COMMENT = 'SET_CURRENT_ADD_COMMENT'
 export const CURRENT_POST_UPDATE_COMMENT = 'SET_CURRENT_UPDATE_COMMENT'
 export const CURRENT_POST_REMOVE_COMMENT = 'CURRENT_POST_REMOVE_COMMENT'
+export const UPDATE_POST_VOTESCORE = 'UPDATE_POST_VOTESCORE'
 
 export const SET_CATEGORIES = 'SET_CATEGORIES'
 
@@ -152,5 +154,19 @@ export function removeCurrentPostComment (comment) {
             ...comment,
             deleted: true,
         },
+    }
+}
+
+export function votePostAndUpdateRedux (postId, vote) {
+    return function (dispatch) {
+        apiVotePost(postId, vote).then(res => dispatch(updatePostVoteScore(res.id, res.voteScore)))
+    }
+}
+
+export function updatePostVoteScore (postId, voteScore) {
+    return {
+        type: UPDATE_POST_VOTESCORE,
+        id: postId,
+        voteScore,
     }
 }

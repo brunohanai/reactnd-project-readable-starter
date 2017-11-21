@@ -4,6 +4,7 @@ import {
     CURRENT_POST_ADD_COMMENT,
     CURRENT_POST_UPDATE_COMMENT,
     CURRENT_POST_REMOVE_COMMENT,
+    UPDATE_POST_VOTESCORE,
 } from '../actions'
 
 function currentPost (state = null, action) {
@@ -37,6 +38,15 @@ function currentPost (state = null, action) {
                 ...state,
                 comments: comments,
             }
+        case UPDATE_POST_VOTESCORE:
+            if (state.id === action.id) {
+                return {
+                    ...state,
+                    voteScore: action.voteScore,
+                }
+            }
+
+            return state
         default:
             return state
     }
