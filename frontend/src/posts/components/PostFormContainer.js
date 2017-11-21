@@ -1,3 +1,4 @@
+import { compose } from 'redux'
 import { connect } from 'react-redux'
 import PostForm from './PostForm'
 import { createPost, editPost } from '../actions'
@@ -54,5 +55,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     }
 }
 
-const PF = reduxForm({form: 'postForm', validate})(PostForm)
-export default connect(mapStateToProps, mapDispatchToProps)(PF)
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    reduxForm({ form: 'postForm', validate })
+)(PostForm)

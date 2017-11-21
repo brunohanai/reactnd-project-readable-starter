@@ -1,3 +1,4 @@
+import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
 import CommentForm from './CommentForm'
@@ -31,5 +32,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const CF = reduxForm()(CommentForm)
-export default connect(mapStateToProps, mapDispatchToProps)(CF)
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    reduxForm()
+)(CommentForm)
