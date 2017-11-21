@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { compose } from 'redux'
 import { fetchPostFromServer, fetchCommentsFromServer, setCurrentPost, deletePost } from '../actions'
 import Post from './Post'
 import { withRouter } from 'react-router-dom'
@@ -18,5 +19,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     }
 }
 
-const PostWithRouter = withRouter(Post)
-export default connect(mapStateToProps, mapDispatchToProps)(PostWithRouter)
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    withRouter
+)(Post)
